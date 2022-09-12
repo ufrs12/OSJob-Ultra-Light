@@ -34,6 +34,8 @@
             this.структурыОрганизацийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сотрудникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.штатноеРасписаниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.объектыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.объектыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,7 +43,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.организацииToolStripMenuItem,
-            this.сотрудникиToolStripMenuItem});
+            this.сотрудникиToolStripMenuItem,
+            this.объектыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -85,6 +88,21 @@
             this.штатноеРасписаниеToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.штатноеРасписаниеToolStripMenuItem.Text = "Штатное расписание";
             // 
+            // объектыToolStripMenuItem
+            // 
+            this.объектыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.объектыToolStripMenuItem1});
+            this.объектыToolStripMenuItem.Name = "объектыToolStripMenuItem";
+            this.объектыToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.объектыToolStripMenuItem.Text = "Объекты";
+            // 
+            // объектыToolStripMenuItem1
+            // 
+            this.объектыToolStripMenuItem1.Name = "объектыToolStripMenuItem1";
+            this.объектыToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.объектыToolStripMenuItem1.Text = "Объекты";
+            this.объектыToolStripMenuItem1.Click += new System.EventHandler(this.объектыToolStripMenuItem1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -109,6 +127,8 @@
         private System.Windows.Forms.ToolStripMenuItem структурыОрганизацийToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem штатноеРасписаниеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem объектыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem объектыToolStripMenuItem1;
     }
 }
 

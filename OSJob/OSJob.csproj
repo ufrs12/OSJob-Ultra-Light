@@ -109,6 +109,19 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ComboItem.cs" />
+    <Compile Include="Objects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Objects.Designer.cs">
+      <DependentUpon>Objects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Object_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Object_add.Designer.cs">
+      <DependentUpon>Object_add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Struct.cs">
@@ -137,6 +150,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Objects.resx">
+      <DependentUpon>Objects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Object_add.resx">
+      <DependentUpon>Object_add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

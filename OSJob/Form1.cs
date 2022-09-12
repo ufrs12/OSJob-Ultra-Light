@@ -34,5 +34,14 @@ namespace OSJob
             };
             Struct.ShowDialog();
         }
+
+        private void объектыToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form Objects = new Objects
+            {
+                FormBorderStyle = FormBorderStyle.FixedSingle
+            };
+            Objects.ShowDialog();
+        }
     }
 }

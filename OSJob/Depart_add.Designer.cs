@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -44,6 +45,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(372, 20);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -53,6 +55,7 @@
             this.label1.Size = new System.Drawing.Size(128, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Родительский элемент:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -62,6 +65,7 @@
             this.label2.Size = new System.Drawing.Size(125, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Полное наименование:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // textBox2
             // 
@@ -70,6 +74,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(372, 84);
             this.textBox2.TabIndex = 3;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox3
             // 
@@ -78,6 +83,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(372, 44);
             this.textBox3.TabIndex = 4;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label3
             // 
@@ -87,6 +93,7 @@
             this.label3.Size = new System.Drawing.Size(129, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Краткое наименование:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // btn_add
             // 
@@ -108,11 +115,21 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(58, 246);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "label4";
+            // 
             // Depart_add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(380, 276);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.label3);
@@ -139,5 +156,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Label label4;
     }
 }

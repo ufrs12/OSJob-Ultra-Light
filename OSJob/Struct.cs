@@ -13,11 +13,18 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OSJob
 {
+
     public partial class Struct : Form
     {
+        private BindingSource _bsTypes;
         public Struct()
         {
             InitializeComponent();
+            _bsTypes = new BindingSource();
+            _bsTypes.DataSource = typeof(ComboItem);
+            comboBox1.DataSource = _bsTypes;
+            comboBox1.DisplayMember = nameof(ComboItem.Text);
+            comboBox1.ValueMember = nameof(ComboItem.Id);
         }
 
         private void Struct_Load(object sender, EventArgs e)
@@ -28,72 +35,52 @@ namespace OSJob
             //ImgList.Images.Add(Properties.Resources.function);
             //treeView1.ImageList = ImgList;
             treeView1.HideSelection = false;
-            comboBox1.DataSource = Db_class.Ds("SELECT * FROM companies").Tables[0];
-            comboBox1.DisplayMember = "s_name";
-            comboBox1.ValueMember = "id";
-            comboBox1.SelectedIndex = -1;
-            //var rows = Db_class.Ds("SELECT * FROM departs WHERE parent_dep IS NULL").Tables[0].Rows;
-            //foreach (DataRow mains in rows)
-            //{
-            //TreeNode root = new TreeNode
-            //{
-            //    Text = mains["s_name"].ToString(),
-            //    Tag = mains["id"].ToString(),
-            //    Name = mains["f_name"].ToString(),
-            //    ImageIndex = 1,
-            //    SelectedImageIndex = 1
-            //};
-            //comboBox1.Items.Add(new ComboBoxItem { Tag = mains["id"], Content = mains["s_name"].ToString() });
-            //}
-
-
+            foreach (ComboItem ci in Db_class.Bs("SELECT id, s_name FROM companies"))
+            {
+                _bsTypes.Add(ci);
+            }
+            if (_bsTypes.Count == 0)
+            {
+                MessageBox.Show("Отсутствуют организации");
+                this.Close();
+            }
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.Items.Count > 0)
             {
-                BindTreeViewControl();
-                //TreeBuild();
+                TreeBuild();
             }
+            //label3.Text = Convert.ToString(comboBox1.SelectedValue) + (_bsTypes.Current as ComboItem).Text ;
         }
         private void Struct_Activated(object sender, EventArgs e)
         {
             if (comboBox1.Items.Count > 0)
             {
-                BindTreeViewControl();
-                //TreeBuild();
+                TreeBuild();
             }
         }
-        //private void TreeBuild() //процедура построения дерева
-        //{
-            //if (comboBox1.SelectedItem != null)
-            //{
-            //    treeView1.Nodes.Clear();
-            //    treeView1.BeginUpdate();
-            //    TreeNode root = new TreeNode
-            //    {
-            //        Text = comboBox1.Text,
-            //        Tag = comboBox1.SelectedValue.ToString(),
-            //        ImageIndex = 0,
-            //        SelectedImageIndex = 0
-            //    };
-            //    treeView1.Nodes.Add(root);
-
-             //   BindTreeViewControl();
-             //   treeView1.EndUpdate();
-              //  treeView1.Nodes[0].Expand(); // Разворачиваем узел
-            //}
-        //}
+        private void TreeBuild() //процедура построения дерева
+        {
+                treeView1.Nodes.Clear();
+                TreeNode root = new TreeNode
+                {
+                    Text = comboBox1.Text,
+                    Tag = Convert.ToString(comboBox1.SelectedValue),
+                    //ImageIndex = 0,
+                    //SelectedImageIndex = 0
+                };
+                treeView1.Nodes.Add(root);
+                BindTreeViewControl();
+                treeView1.Nodes[0].Expand(); // Разворачиваем узел
+        }
         private void BindTreeViewControl() //Создание основных отделов предприятия
         {
             if (comboBox1.SelectedIndex != -1)
             { 
             string sel = "";
-            //try
-            //{
-
-                //Ищем родительские узлы (parentId=0)
-                sel = "SELECT * FROM departs WHERE parent_dep=0 AND comp_id=" + comboBox1.SelectedValue.ToString();//treeView1.Nodes[0].Tag;
+                int selectedId = Convert.ToInt32(comboBox1.SelectedValue);
+                sel = "SELECT * FROM departs WHERE parent_dep=0 AND comp_id=" + Convert.ToString(selectedId);//treeView1.Nodes[0].Tag;
                 var nodes = Db_class.Ds(sel).Tables[0].Rows;
                 foreach (DataRow mains in nodes)
                 {
@@ -102,27 +89,22 @@ namespace OSJob
                         Text = mains["s_name"].ToString(),
                         Tag = mains["id"].ToString(),
                         Name = mains["f_name"].ToString(),
-                        ImageIndex = 1,
-                        SelectedImageIndex = 1
+                        //ImageIndex = 1,
+                        //SelectedImageIndex = 1
                     };
                     root.Expand(); // Разворачиваем узел
                     //root.SelectedImageIndex = 0;
-                    MessageBox.Show(sel);
+                    //MessageBox.Show(sel);
                     CreateNode(root);
-                    treeView1.Nodes.Add(root);
+                    treeView1.Nodes[0].Nodes.Add(root);
                     
                 }
             }
-            //}
-            //catch (Exception ex)
-            //{
-            //MessageBox.Show("Ошибка в родительских узлах" + sel + ex.Message);
-            //}
         }
         public void CreateNode(TreeNode node)
         {
             string sel = "";
-            sel = "SELECT * FROM departs WHERE parent_dep=" + node.Tag.ToString();//treeView1.Nodes[0].Tag;
+            sel = "SELECT * FROM departs WHERE parent_dep=" + node.Tag.ToString() + " AND comp_id =" + Convert.ToString(comboBox1.SelectedValue);//treeView1.Nodes[0].Tag;
             var nodes = Db_class.Ds(sel).Tables[0].Rows;
             if (nodes.Count == 0) { return; }
 
@@ -154,7 +136,7 @@ namespace OSJob
                     }
                     Form Depart_add = new Depart_add(
                         p,
-                        comboBox1.SelectedValue.ToString(),
+                        Convert.ToString(comboBox1.SelectedValue),
                         treeView1.SelectedNode.Tag.ToString(),
                         treeView1.SelectedNode.Text)
                         {

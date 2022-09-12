@@ -17,6 +17,10 @@ namespace OSJob
         {
             InitializeComponent();
         }
+        private void Companies_Activated(object sender, EventArgs e)
+        {
+            DisplayData();
+        }
         private void DisplayData() //процедура обновления данных
         {
             dataGridView1.DataSource = Db_class.Ds("SELECT * FROM companies");
@@ -61,12 +65,6 @@ namespace OSJob
         {
             this.Close();
         }
-
-        private void Companies_Activated(object sender, EventArgs e)
-        {
-            DisplayData();
-        }
-
         private void btn_del_Click(object sender, EventArgs e) //кнопка Удалить
         {
             if (dataGridView1.CurrentCell != null)

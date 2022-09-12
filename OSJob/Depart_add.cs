@@ -22,6 +22,7 @@ namespace OSJob
         {
             textBox1.ReadOnly = true;
             textBox1.Text = p_s_n;
+            label4.Text = c_id;
         }
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -33,12 +34,15 @@ namespace OSJob
                 {
                     try
                     {
+                        string prag = "";
                         if (p == "1") //если родительский объет предприятие
                         {
                             p_id = "0";
+                            prag = "PRAGMA foreign_keys = OFF;";
                         }
-                        q = "INSERT INTO departs (f_name, s_name, comp_id, parent_dep) VALUES('" + textBox2.Text + "','" + textBox3.Text + "'," + c_id + "," + p_id + ")";
-                        Db_class.Ins(q);
+                        q = prag + "INSERT INTO departs (f_name, s_name, comp_id, parent_dep) VALUES('" + textBox2.Text + "','" + textBox3.Text + "'," + c_id + "," + p_id + ")";
+
+                        MessageBox.Show(Db_class.Ins(q));
                         this.Close();
                     }
                     catch
@@ -61,6 +65,36 @@ namespace OSJob
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

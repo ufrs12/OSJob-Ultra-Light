@@ -51,3 +51,5 @@ C:\Users\Alexey\source\repos\OpenJob\OSJob-Ultra-Light\OSJob\obj\Debug\OSJob.csp
 C:\Users\Alexey\source\repos\OpenJob\OSJob-Ultra-Light\OSJob\obj\Debug\OSJob.csproj.CopyComplete
 C:\Users\Alexey\source\repos\OpenJob\OSJob-Ultra-Light\OSJob\obj\Debug\OSJob.exe
 C:\Users\Alexey\source\repos\OpenJob\OSJob-Ultra-Light\OSJob\obj\Debug\OSJob.pdb
+D:\GitHub\OSJob-Ultra-Light\OSJob\obj\Debug\OSJob.Objects.resources
+D:\GitHub\OSJob-Ultra-Light\OSJob\obj\Debug\OSJob.Object_add.resources
