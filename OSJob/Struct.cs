@@ -171,13 +171,20 @@ namespace OSJob
         {
             if (treeView1.SelectedNode != null) //если что-то выбрано
             {
-                string id = "";
-                id = treeView1.SelectedNode.Tag.ToString();
-                DialogDel dd = new DialogDel();
-                dd.ShowDialog();
-                if (DialogResult.OK == dd.DialogResult)
+                if (treeView1.SelectedNode.Parent != null) //если родительский элемент предприятие
                 {
-                    Db_class.Del("departs", id);
+                    string id = "";
+                    id = treeView1.SelectedNode.Tag.ToString();
+                    DialogDel dd = new DialogDel();
+                    dd.ShowDialog();
+                    if (DialogResult.OK == dd.DialogResult)
+                    {
+                        MessageBox.Show(Db_class.Del("departs", id));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Нельзя удалить предприятие в данной форме.");
                 }
                 //TreeBuild();
             }
